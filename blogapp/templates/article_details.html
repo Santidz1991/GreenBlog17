@@ -1,0 +1,19 @@
+{% extends 'base.html' %} <!-- Aqui le estamos diciendo que es lo que tiene que hacer-->
+{% block title %} {{ post.title_tag }} {% endblock %}
+
+{% block content %}
+
+<h1> {{ post.title }}</h1>
+<small>By: {{ post.author.first_name }} {{ post.author.last_name }} </small> <br/>
+
+<hr>
+<br/>
+
+{{ post.body }}
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary"
+> Back </a>
+
+{% endblock %}
+<!-- Todo lo que esta entre el "block content" y el "endblock" va a ser tomado y pegado en la pagina "base.html"-->
