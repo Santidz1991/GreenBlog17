@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 '''
 def home(request):
     return render(request, 'home.html', {})
@@ -25,3 +27,16 @@ def objetivos1(request):
 
 def objetivosfull(request):
     return render(request,'objetivosfull.html',{})
+
+def register(request):
+    if request.method=='POST':
+        form=UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data['username']
+            messages.success(request, f'Usuario {username} creado')
+    else:
+        form=UserCreationForm()
+    context={'form':form}       
+    
+    return render(request,'singIn.html',context)

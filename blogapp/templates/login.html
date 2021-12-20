@@ -1,13 +1,12 @@
-<html>
+<<html>
     <head>
         <Title>Complete los siguientes datos</Title>
     </head>
-
-        <p>Ingrese su email</p>
-         <input type="email" email="email">
-         <p>Ingrese su contraseña</p>
-         <input type="password" pass="pass">
-
-    <p></p>
-      <input type="submit" value=" Ingresar a tu Cuenta"> 
+    <form class="form" method="post">
+     {% csrf_token %}
+     {{ form.as_p}}
+    <br>
+      <button type="submit" id="submit">Ingresar</button>
+    </form>
+      
 </html>

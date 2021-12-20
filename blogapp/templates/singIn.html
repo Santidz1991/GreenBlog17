@@ -2,16 +2,17 @@
     <head>
         <Title>Complete los siguientes datos</Title>
     </head>
-        <br>
-        <p>Cree un nombre de usuario</p>
-         <input type="text" name="userName">
-        <br>
-        <p>Ingrese un e-mail de referencia</p>
-         <input type="email" email="email">
-        <br>
-        <p>Cree una contraseña</p>
-         <input type="password" pass="pass">
-        <p>su contraseña puede cambiarse desde su correo electronico</p>
+    <form class="form" method="post">
+     {% csrf_token %}
+     {{ form.as_p}}
     <br>
-      <input type="submit" value=" Crear Cuenta"> 
+      <button type="submit" id="submit">Crear Cuenta</button>
+    </form>
+     {% if messages %} 
+          {% for message in messages %}
+              <div class="noticication{{message.tags}}">
+                  {{message}}
+              </div>
+          {%endfor%}
+     {% endif %}  
 </html>
