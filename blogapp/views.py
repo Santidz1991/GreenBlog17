@@ -19,3 +19,9 @@ class AddPostView(CreateView):
     template_name = 'addpost.html'
     fields = '__all__'
     # fields = ('title', 'body')
+
+def objetivos1(request):
+    return render(request,'inicio.html',{})
+
+def objetivosfull(request):
+    return render(request,'objetivosfull.html',{})
