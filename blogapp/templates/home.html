@@ -6,7 +6,9 @@
 <!-- post.pk nos hace referencia a la primary key del post-->
 <ul>
 {% for post in object_list %}
-    <li> <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }}<br/>
+    <li> <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }} 
+        <small><a href="{% url 'updatepost' post.pk %}">(Edit Post)</a></small>
+        <small><a href="{% url 'deletepost' post.pk %}">(Delete)</a></small> <br/>
     {{ post.body }}</li>
 
 
