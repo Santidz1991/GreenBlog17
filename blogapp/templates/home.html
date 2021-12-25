@@ -7,10 +7,11 @@
 <ul>
 {% for post in object_list %}
     <li> <a href="{% url 'article-detail' post.pk %}">
-            {{ post.title }}</a> - 
-            {{ post.author.first_name }} 
-            {{ post.author.last_name }} - 
-            {{ post.post_date }}
+            {{ post.title }}</a>
+            <strong>-   {{ post.category }}</strong>
+            -   {{ post.author.first_name }} 
+                {{ post.author.last_name }}
+            -   {{ post.post_date }}
         
                 {% if user.is_authenticated %}
                 - <small><a href="{% url 'updatepost' post.pk %}">(Edit Post)</a></small>

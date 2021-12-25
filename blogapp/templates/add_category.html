@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} ¡Crea tu categoria! {% endblock %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+    <h1> Crea tu categoria </h1>
+
+    <br/><br/>
+    <div class="form-group"></div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-dark"> Crear </button>
+    </form>
+    </div>
+
+{% else %}
+
+No tienes los permisos necesarios para estar aqui.
+
+{% endif %}
+
+
+{% endblock %}

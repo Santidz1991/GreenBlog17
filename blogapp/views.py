@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from .models import Post
+from .models import Category, Post
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
+from django.views import View
 
 '''
 def home(request):
@@ -24,6 +25,12 @@ class AddPostView(CreateView):
     form_class = PostForm
     template_name = 'addpost.html'
 
+class AddCategoryView(CreateView):
+    model = Category
+    # form_class = PostForm
+    template_name = 'add_category.html'
+    fields = '__all__'
+
 class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
@@ -34,6 +41,6 @@ class DeletePostView(DeleteView):
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
 
-class objetivosfull(TemplateView):
-    model = Post
-    template_name = 'objetivosFull.html'
+class MyView(View):
+    model = TemplateView
+    template_name = 'objetivos.html'
