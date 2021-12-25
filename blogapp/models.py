@@ -5,7 +5,7 @@ from datetime import datetime, date
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    title_tag = models.CharField(max_length=255, default="Green Blog 17")
+    title_tag = models.CharField(max_length=255, default="Agenda 2030 Blog")
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)

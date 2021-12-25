@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='title_tag',
-            field=models.CharField(default='Green Blog 17', max_length=255),
+            field=models.CharField(default='Agenda 2030 Blog', max_length=255),
         ),
     ]
