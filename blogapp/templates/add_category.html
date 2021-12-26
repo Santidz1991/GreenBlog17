@@ -18,9 +18,12 @@
 
 {% else %}
 
-No tienes los permisos necesarios para estar aqui.
+<h3>No tienes los permisos necesarios para estar aqui.</h3>
 
 {% endif %}
 
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary"
+> Atras </a>
 
 {% endblock %}

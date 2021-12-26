@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1> Post </h1>
+<h1> Posts </h1>
 
 <!-- post.pk nos hace referencia a la primary key del post-->
 <ul>
 {% for post in object_list %}
     <li> <a href="{% url 'article-detail' post.pk %}">
             {{ post.title }}</a>
-            <strong>-   {{ post.category }}</strong>
+            - <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>
             -   {{ post.author.first_name }} 
                 {{ post.author.last_name }}
             -   {{ post.post_date }}
         
                 {% if user.is_authenticated %}
-                - <small><a href="{% url 'updatepost' post.pk %}">(Edit Post)</a></small>
-                <small><a href="{% url 'deletepost' post.pk %}">(Delete)</a></small>
+                - <small><a href="{% url 'updatepost' post.pk %}">(Editar Post)</a></small>
+               - <small><a href="{% url 'deletepost' post.pk %}">(Borrar)</a></small>
 
                 {% endif %}
         </br>

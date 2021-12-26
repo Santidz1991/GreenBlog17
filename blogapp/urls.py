@@ -1,7 +1,6 @@
 from django.urls import path
-from django.views.generic.base import TemplateView
-from .views import AddPostView, HomeView, ArticleDetailView, UpdatePostView, DeletePostView, AddCategoryView , TemplateView
-from blogapp.views import MyView
+from .views import AddPostView, HomeView, ArticleDetailView, ObjetivosView, UpdatePostView, DeletePostView, AddCategoryView , CategoryView
+
 
 
 urlpatterns = [
@@ -12,7 +11,8 @@ urlpatterns = [
     path('add_category/', AddCategoryView.as_view(), name='add_category'),
     path('article/edit/<int:pk>', UpdatePostView.as_view(), name='updatepost'),
     path('article/delete/<int:pk>', DeletePostView.as_view(), name='deletepost'),
-    path('objetivos/', MyView.as_view(), name='objetivosfull'),
+    path('category/<str:cats>/', CategoryView, name='category'), 
+    path('objetivos/', ObjetivosView, name='objetivosfull'),
     ]
  
 # pk = primary key Asi podemos identificar el numero unico del post

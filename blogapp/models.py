@@ -19,7 +19,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
-    category = models.CharField(max_length=100, default='Sin categorizar')
+    category = models.CharField(max_length=80, default='general')
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)

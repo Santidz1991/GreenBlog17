@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Category, Post
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
@@ -41,6 +41,9 @@ class DeletePostView(DeleteView):
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
 
-class MyView(View):
-    model = TemplateView
-    template_name = 'objetivos.html'
+def ObjetivosView(request, obj):
+    return render(request, 'objetivos.html', {})
+
+def CategoryView(request, cats):
+    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    return render(request, 'categories.html', {'cats':cats.title().replace('-', ' '), 'category_posts': category_posts})

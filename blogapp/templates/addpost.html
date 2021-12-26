@@ -5,22 +5,25 @@
 
 {% if user.is_authenticated %}
 
-    <h1> Create your post </h1>
+    <h1> Crea tu post </h1>
 
     <br/><br/>
     <div class="form-group"></div>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="btn btn-dark"> Post </button>
+            <button class="btn btn-dark"> Postear </button>
     </form>
     </div>
 
 {% else %}
 
-You're not allowed to be here.
+No tienes los permisos suficientes para estar aqui.
 
 {% endif %}
 
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary"
+> Atras </a>
 
 {% endblock %}

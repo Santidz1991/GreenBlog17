@@ -5,23 +5,27 @@
 
 {% if user.is_authenticated %}
 
-    <h1> Delete your post </h1>
+    <h1> Borra tu post </h1>
 
     <br/><br/>
-    <h3>Delete: {{ post.title }}</h3>
+    <h3>Borraras: {{ post.title }}</h3>
     <br/>
     <div class="form-group"></div>
         <form method="POST">
             {% csrf_token %}
-            <h6><strong>¡¿Are you sure!?</strong></h6><br/>
-            <button class="btn btn-danger"> Delete </button>
+            <h6><strong>¡¿Estas seguro!?</strong></h6><br/>
+            <button class="btn btn-danger"> Borrar </button>
     </form>
     </div>
 
 {% else %}
 
-You're not alloed to be here.
+No tienes los permisos suficientes para estar aqui.
 
 {% endif %}
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary"
+> Atras </a>
 
 {% endblock %}
