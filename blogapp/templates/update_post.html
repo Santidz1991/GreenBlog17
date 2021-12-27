@@ -4,17 +4,23 @@
 
 
 {% if user.is_authenticated %}
-    <h1> Modifica your post </h1>
+    {% if user.id == post.author.id %}    
+        <h1> Modifica your post </h1>
 
-    <br/><br/>
-    <div class="form-group"></div>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-dark"> Modificar </button>
-    </form>
-    </div>
+        <br/><br/>
+        <div class="form-group"></div>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-dark"> Modificar </button>
+        </form>
+        </div>
+    {% else %}
 
+        No tienes los permisos para estar aqui.
+
+    {% endif %}
+    
 {% else %}
 
 No tienes los permisos para estar aqui.

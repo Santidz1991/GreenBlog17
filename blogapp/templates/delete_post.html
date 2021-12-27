@@ -4,20 +4,24 @@
 
 
 {% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <h1> Borra tu post </h1>
 
-    <h1> Borra tu post </h1>
+        <br/><br/>
+        <h3>Borraras: {{ post.title }}</h3>
+        <br/>
+        <div class="form-group"></div>
+            <form method="POST">
+                {% csrf_token %}
+                <h6><strong>¡¿Estas seguro!?</strong></h6><br/>
+                <button class="btn btn-danger"> Borrar </button>
+        </form>
+        </div>
+    {% else %}
 
-    <br/><br/>
-    <h3>Borraras: {{ post.title }}</h3>
-    <br/>
-    <div class="form-group"></div>
-        <form method="POST">
-            {% csrf_token %}
-            <h6><strong>¡¿Estas seguro!?</strong></h6><br/>
-            <button class="btn btn-danger"> Borrar </button>
-    </form>
-    </div>
-
+        No tienes los permisos suficientes para estar aqui.
+    {% endif %}
+    
 {% else %}
 
 No tienes los permisos suficientes para estar aqui.
