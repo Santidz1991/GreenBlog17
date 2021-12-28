@@ -20,7 +20,17 @@
 <br/>
 
 {{ post.body }}
+<br/><br/>
+{% if user.is_authenticated %}
+<hr>
+<br/>
 
+<form action="{% url 'like_post' post.pk %}"  method="POST">
+        {% csrf_token %}
+        <button type="submit", name="post_id", value="{{ post.id }}" class="btn btn-outline-info btn-sm">Like</button> - {{ total_likes }} Likes
+</form>
+
+{% endif %}
 <br/><br/>
 <a href="{% url 'home' %}" class="btn btn-secondary"
 > Atras </a>
