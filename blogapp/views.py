@@ -56,7 +56,7 @@ class DeletePostView(DeleteView):
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
 
-def ObjetivosView(request, obj):
+def ObjetivosView(request):
     return render(request, 'objetivos.html', {})
 
 def CategoryView(request, cats):
