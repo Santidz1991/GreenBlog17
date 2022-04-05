@@ -4,6 +4,9 @@
 
     {% if user.is_authenticated %}
         <h1> Edita tu perfil </h1>
+        </br></br>
+
+         {{ user.profile.bio }}
 
         <br/><br/>
         <div class="form-group"></div>

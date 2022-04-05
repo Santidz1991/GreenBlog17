@@ -19,10 +19,10 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
 class EditProfileForm(UserChangeForm):
+    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingresa tu nombre de usuario'}))
     email = forms.EmailField(widget=forms.EmailInput({'class': 'form-control', 'placeholder': 'Ingresa tu email'}))
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingresa tu nombre'}))
     last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingresa tu apellido'}))
-    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingresa tu nombre de usuario'}))
     last_login  = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     is_superuser  = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
     is_staff  = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))

@@ -1,4 +1,5 @@
-{% extends 'base.html' %} <!-- Aqui le estamos diciendo que es lo que tiene que hacer-->
+{% extends 'base.html' %} <!-- Aqui le estamos diciendo de donde sale la base-->
+{% load static %}
 {% block title %} {{ post.title_tag }} {% endblock %}
 
 {% block content %}
@@ -6,8 +7,8 @@
 <h1> {{ post.title }}</h1>
 <small>Publicado por: 
         {{ post.author.first_name }} 
-        {{ post.author.last_name }} 
-        
+        {{ post.author.last_name }}
+                
         {% if user.is_authenticated %}
                 {% if user.id == post.author.id %}
                         - <small><a href="{% url 'updatepost' post.pk %}">(Editar Post) </a>
@@ -32,8 +33,42 @@
 
 {% endif %}
 <br/><br/>
+
+<div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-2">
+
+{% if post.author.profile.profile_pic %}
+          
+            <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" width="210" height="200">
+
+{% else %}
+
+            <img src="{% static 'blogapp/images/default_profile_pic.jpg' %}" class="img-fluid rounded-start" width="210" height="200">
+
+{% endif %}
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5>
+              <p class="small text-muted"> 
+                <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile Page </a>|
+                <a href="">Website </a>|
+                <a href="">Facebook </a>|
+                <a href="">Twitter </a>|
+                <a href="">Instagram </a>|
+                <a href="">Pinterest  </a>
+                </p>
+              <p class="card-text">{{ post.author.profile.bio }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</br></br>
 <a href="{% url 'home' %}" class="btn btn-secondary"
 > Atras </a>
 
+</br></br>
 {% endblock %}
 <!-- Todo lo que esta entre el "block content" y el "endblock" va a ser tomado y pegado en la pagina "base.html"-->
